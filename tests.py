@@ -49,14 +49,14 @@ class UnitTests(unittest.TestCase):
 
     #     self.assertEqual(res, len(ejecucion))
 
-    # def test_15_subconjuntos(self):
-    #     file = './archivos_prueba/15.txt'
-    #     res = 4
+    def test_15_subconjuntos(self):
+        file = './archivos_prueba/15.txt'
+        res = 4
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
     # def test_20_subconjuntos(self):
     #     file = './archivos_prueba/20.txt'
