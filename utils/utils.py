@@ -14,5 +14,3 @@ def obtener_conjunto_y_subconjuntos(filename):
             subconjuntos.add(frozenset(subconjunto_actual))
 
     return conjunto, subconjuntos
-
-print(obtener_conjunto_y_subconjuntos('./archivos_prueba/7.txt'))
