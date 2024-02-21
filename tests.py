@@ -21,7 +21,7 @@ class UnitTests(unittest.TestCase):
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-
+        print(ejecucion)
         self.assertEqual(res, len(ejecucion))
 
     def test_10_pocos_subconjuntos(self):
@@ -30,7 +30,8 @@ class UnitTests(unittest.TestCase):
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-
+        print(subconjuntos)
+        print(ejecucion)
         self.assertEqual(res, len(ejecucion))
 
     def test_10_todos_subconjuntos(self):
