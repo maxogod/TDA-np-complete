@@ -9,8 +9,10 @@ def obtener_conjunto_y_subconjuntos(filename):
             subconjunto_actual = set()
             requeridos = line.split(',')
             for requerido in requeridos:
-                conjunto.add(requerido)
-                subconjunto_actual.add(requerido)
+                conjunto.add(requerido.strip('\n'))
+                subconjunto_actual.add(requerido.strip('\n'))
             subconjuntos.add(frozenset(subconjunto_actual))
 
     return conjunto, subconjuntos
+
+print(obtener_conjunto_y_subconjuntos('./archivos_prueba/7.txt'))
