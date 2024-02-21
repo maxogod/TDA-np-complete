@@ -2,7 +2,7 @@
 
 def obtener_conjunto_y_subconjuntos(filename):
     conjunto = set()
-    subconjuntos = set()
+    subconjuntos = []
 
     with open(filename, 'r') as file:
         for line in file:
@@ -11,6 +11,6 @@ def obtener_conjunto_y_subconjuntos(filename):
             for requerido in requeridos:
                 conjunto.add(requerido.strip('\n'))
                 subconjunto_actual.add(requerido.strip('\n'))
-            subconjuntos.add(frozenset(subconjunto_actual))
+            subconjuntos.append(subconjunto_actual)
 
     return conjunto, subconjuntos
