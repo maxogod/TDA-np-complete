@@ -1,45 +1,57 @@
 #!/usr/bin/env python3
 
-
-def _hitting_set(sol_parcial, sol_total, restantes):
-    print(f'Sol_parcial:{sol_parcial}')
-    if len(sol_parcial) >= len(sol_total) and len(sol_total) > 0: # Lee bien esta linea XD
-        return
-
-    if not restantes:
-        sol_total[:] = sol_parcial[:]
-        return
-    
-    for subset in restantes:
-        for jugador in subset:
-            sol_parcial.append(jugador)
-            nuevos_restantes = [s for s in restantes if jugador not in s]
-            if len(nuevos_restantes) == len(restantes) - 1:
-                _hitting_set(sol_parcial, sol_total, nuevos_restantes)
-                sol_parcial.remove(jugador) 
-                break 
-            _hitting_set(sol_parcial, sol_total, nuevos_restantes)
-            sol_parcial.remove(jugador) 
-
+from utils.utils import obtener_conjunto_y_subconjuntos
 
 def obtener_hitting_set(A,B):
     sol_total = []
-    print(f'B:{B}')
-    print('-'*50)
-    sort_dict = {}
-    for s in B:
-        for jugador in s:
-            if jugador in sort_dict:
-                sort_dict[jugador] += 1
-            else:
-                sort_dict[jugador] = 1
-    print(f'Sort_dict:{sort_dict}')
-    print('-'*50)
-
-    # x = sorted(B, key=lambda subset: sum(sort_dict[jugador] for jugador in subset)/len(subset), reverse=True)
-    # for i,subs in enumerate(x):
-    #     x[i] = sorted(subs, key=lambda jugador: sort_dict[jugador], reverse=True)
-    # print(f'X:{x}')
-    # print('-'*50)
-    _hitting_set([], sol_total, B)
+    _hitting_set_recursivo(B, [], sol_total, 0)
     return sol_total
+
+
+def _hitting_set_recursivo(B, solucion_parcial, solucion_total, subset_actual):
+    
+    if len(solucion_parcial) >= len(solucion_total) and len(solucion_total) > 0:
+        return False # Por este camino no se puede llegar a una solución mejor (o de menor largo)
+    
+    if subset_actual == len(B) and verificar(B, solucion_parcial):
+        solucion_total[:] = solucion_parcial
+        return True # Se llego a una solución válida
+
+    if ya_hiteado(B[subset_actual], solucion_parcial): # Salteamos el subset si ya esta hiteado
+        return _hitting_set_recursivo(B, solucion_parcial, solucion_total, subset_actual + 1)
+    
+    for elem in B[subset_actual]:
+        
+        solucion_parcial.append(elem)
+        
+        if not _hitting_set_recursivo(B, solucion_parcial, solucion_total, subset_actual + 1):
+                solucion_parcial.pop()
+                return True # Este camino no minimiza el largo del hitting set, se vuelve atras en la recursión
+        
+        solucion_parcial.pop()
+    
+    return True
+
+def ya_hiteado(subset, sol):
+    for elem in sol:
+        if elem in subset:
+            return True
+    return False
+
+def verificar(B, sol):
+
+    for subconjunto in B:
+        hit = False
+        for elem in subconjunto:
+            if elem in sol:
+                hit = True
+                break
+        if not hit:
+            return False
+    
+    return True
+
+if __name__ == "__main__":
+    
+    A, B = obtener_conjunto_y_subconjuntos('./archivos_prueba/5.txt')
+    print(obtener_hitting_set(A, B))

@@ -30,23 +30,22 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         self.assertEqual(res, len(ejecucion))
 
-    # def test_10_todos_subconjuntos(self):
-    #     file = './archivos_prueba/10_todos.txt'
-    #     res = 10
+    def test_10_todos_subconjuntos(self):
+        file = './archivos_prueba/10_todos.txt'
+        res = 10
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-    #     print(ejecucion)
-    #     self.assertEqual(res, len(ejecucion))
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        self.assertEqual(res, len(ejecucion))
 
-    # def test_10_varios_subconjuntos(self):
-    #     file = './archivos_prueba/10_varios.txt'
-    #     res = 6
+    def test_10_varios_subconjuntos(self):
+        file = './archivos_prueba/10_varios.txt'
+        res = 6
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
     def test_15_subconjuntos(self):
         file = './archivos_prueba/15.txt'
@@ -57,50 +56,50 @@ class UnitTests(unittest.TestCase):
 
         self.assertEqual(res, len(ejecucion))
 
-    # def test_20_subconjuntos(self):
-    #     file = './archivos_prueba/20.txt'
-    #     res = 5
+    def test_20_subconjuntos(self):
+        file = './archivos_prueba/20.txt'
+        res = 5
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
-    # def test_50_subconjuntos(self):
-    #     file = './archivos_prueba/50.txt'
-    #     res = 6
+    def test_50_subconjuntos(self):
+        file = './archivos_prueba/50.txt'
+        res = 6
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
-    # def test_75_subconjuntos(self):
-    #     file = './archivos_prueba/75.txt'
-    #     res = 8
+    def test_75_subconjuntos(self):
+        file = './archivos_prueba/75.txt'
+        res = 8
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
-    # def test_100_subconjuntos(self):
-    #     file = './archivos_prueba/100.txt'
-    #     res = 9
+    def test_100_subconjuntos(self):
+        file = './archivos_prueba/100.txt'
+        res = 9
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
-    # def test_200_subconjuntos(self):
-    #     file = './archivos_prueba/200.txt'
-    #     res = 9
+    def test_200_subconjuntos(self):
+        file = './archivos_prueba/200.txt'
+        res = 9
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
 
-    #     self.assertEqual(res, len(ejecucion))
+        self.assertEqual(res, len(ejecucion))
 
 
 if __name__ == '__main__':
