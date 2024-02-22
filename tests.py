@@ -3,7 +3,7 @@
 import unittest
 from utils.utils import obtener_conjunto_y_subconjuntos
 from algoritmo_backtracking import obtener_hitting_set
-
+from algoritmo_aproximado import hitting_set_greedy
 
 class UnitTests(unittest.TestCase):
     def test_5_subconjuntos(self):
@@ -12,6 +12,8 @@ class UnitTests(unittest.TestCase):
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        print(hitting_set_greedy(subconjuntos))
+    
         self.assertEqual(res, len(ejecucion))
 
     def test_7_subconjuntos(self):
@@ -20,6 +22,7 @@ class UnitTests(unittest.TestCase):
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+
         self.assertEqual(res, len(ejecucion))
 
     def test_10_pocos_subconjuntos(self):
