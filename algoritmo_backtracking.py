@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 from utils.utils import obtener_conjunto_y_subconjuntos
 
 def obtener_hitting_set(A,B):
@@ -52,6 +53,7 @@ def verificar(B, sol):
     return True
 
 if __name__ == "__main__":
-    
-    A, B = obtener_conjunto_y_subconjuntos('./archivos_prueba/5.txt')
-    print(obtener_hitting_set(A, B))
+    args = sys.argv
+    A, B = obtener_conjunto_y_subconjuntos(args[1])
+    ejecucion = obtener_hitting_set(A, B)
+    print(f"Jugadores Totales: {len(ejecucion)}\nLista de Jugadores: {ejecucion}")
