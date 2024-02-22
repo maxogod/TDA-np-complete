@@ -3,6 +3,7 @@
 import sys
 from utils.utils import obtener_conjunto_y_subconjuntos
 
+
 def obtener_hitting_set(A,B):
     sol_total = []
     _hitting_set_recursivo(B, [], sol_total, 0)
@@ -33,11 +34,13 @@ def _hitting_set_recursivo(B, solucion_parcial, solucion_total, subset_actual):
     
     return True
 
+
 def ya_hiteado(subset, sol):
     for elem in sol:
         if elem in subset:
             return True
     return False
+
 
 def verificar(B, sol):
 
@@ -51,6 +54,7 @@ def verificar(B, sol):
             return False
     
     return True
+
 
 if __name__ == "__main__":
     args = sys.argv
