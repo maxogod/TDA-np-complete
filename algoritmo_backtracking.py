@@ -16,7 +16,7 @@ def _hitting_set_recursivo(B, solucion_parcial, solucion_total, subset_actual):
         return False # Por este camino no se puede llegar a una solución mejor (o de menor largo)
     
     if subset_actual == len(B) and verificar(B, solucion_parcial):
-        solucion_total[:] = solucion_parcial
+        solucion_total[:] = solucion_parcial[:]
         return True # Se llego a una solución válida
 
     for elem in solucion_parcial:
@@ -31,7 +31,7 @@ def _hitting_set_recursivo(B, solucion_parcial, solucion_total, subset_actual):
                 solucion_parcial.pop()
                 return True # Este camino no minimiza el largo del hitting set, se vuelve uno atras en la recursión
         
-        solucion_parcial.pop()
+        solucion_parcial.pop() # Ya se encontró una solución, se sigue iterando en busca de una mejora
     
     return True
 
