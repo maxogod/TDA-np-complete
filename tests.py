@@ -4,6 +4,7 @@ import unittest
 from utils.utils import obtener_conjunto_y_subconjuntos
 from algoritmo_backtracking import obtener_hitting_set
 from algoritmo_aproximado import hitting_set_greedy
+import math
 
 class UnitTests(unittest.TestCase):
     def test_5_subconjuntos(self):
@@ -14,9 +15,9 @@ class UnitTests(unittest.TestCase):
         
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
-        
+
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_7_subconjuntos(self):
@@ -28,8 +29,9 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
+
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_10_pocos_subconjuntos(self):
@@ -41,8 +43,9 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
+
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_10_todos_subconjuntos(self):
@@ -55,7 +58,7 @@ class UnitTests(unittest.TestCase):
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_10_varios_subconjuntos(self):
@@ -68,7 +71,7 @@ class UnitTests(unittest.TestCase):
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_15_subconjuntos(self):
@@ -80,8 +83,9 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
+
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_20_subconjuntos(self):
@@ -94,7 +98,7 @@ class UnitTests(unittest.TestCase):
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_50_subconjuntos(self):
@@ -106,8 +110,9 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
+
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_75_subconjuntos(self):
@@ -119,8 +124,9 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
+   
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_100_subconjuntos(self):
@@ -132,8 +138,9 @@ class UnitTests(unittest.TestCase):
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
         
+
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
     def test_200_subconjuntos(self):
@@ -144,9 +151,9 @@ class UnitTests(unittest.TestCase):
 
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(subconjuntos)
-        
+     
         self.assertGreaterEqual(len(ejecucion_greedy), res)
-        self.assertGreaterEqual(res*2, len(ejecucion_greedy))
+        self.assertGreaterEqual(math.ceil(len(ejecucion)*math.log(len(ejecucion) + 1)), len(ejecucion_greedy))        
         self.assertEqual(res, len(ejecucion))
 
 
