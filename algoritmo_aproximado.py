@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
 
 
+# Esto es lo que se tiene que buscar minimizar en cada paso segun el K&T, 11.3
+def calcular_pesos(subconjuntos):
+    pesos = {}
+    for subconjunto in subconjuntos:
+        for jugador in subconjunto:
+            if jugador not in pesos:
+                pesos[jugador] = 1
+            else:
+                pesos[jugador] += 1
+
+    for jugador in pesos.keys():
+        for subconjunto in subconjuntos:
+            if jugador in subconjunto:
+                pesos[jugador] /= len(subconjunto)        
+    return pesos
 
 def hitting_set_greedy(A, B):
-    # Se crea un dict con la frecuencia de apariciones de cada jugador en los subconjuntos
-    # Se ordena el set de subconjuntos de acuerdo a la suma de las frecuencias de los jugadores, dividido por la cantidad de jugadores en el subconjunto
-    # Se ordenan los jugadores de cada subconjunto de acuerdo a su frecuencia
-    
     a = list(A)
     x = list(B)
     hitting_set = []
     while len(x) > 0:
-        sort_dict = {}
-
-        for s in x: 
-            for jugador in s:
-                sort_dict[jugador] = sort_dict.get(jugador, 0) + 1
-        
-        a.sort(key=lambda jugador: sort_dict.get(jugador, 0), reverse=True)
+        pesos = calcular_pesos(x)
+        a.sort(key=lambda jugador: pesos.get(jugador, 0))
 
         hitting_set.append(a[0])
         x = [s for s in x if a[0] not in s]        

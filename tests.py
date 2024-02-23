@@ -6,18 +6,35 @@ from algoritmo_backtracking import obtener_hitting_set
 from algoritmo_aproximado import hitting_set_greedy
 import math
 
+def calcular_pesos(subconjuntos):
+    pesos = {}
+    for subconjunto in subconjuntos:
+        for jugador in subconjunto:
+            if jugador not in pesos:
+                pesos[jugador] = 1
+            else:
+                pesos[jugador] += 1
+
+    # for jugador in pesos.keys():
+    #     for subconjunto in subconjuntos:
+    #         if jugador in subconjunto:
+    #             pesos[jugador] /= len(subconjunto)        
+    return pesos
+
 class UnitTests(unittest.TestCase):
     def test_5_subconjuntos(self):
         file = './archivos_prueba/5.txt'
         res = 2
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-        
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)
-
-        # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)
+        self.assertGreaterEqual(len(ejecucion_greedy), res)
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
 
     def test_7_subconjuntos(self):
@@ -26,23 +43,28 @@ class UnitTests(unittest.TestCase):
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-        # print(f'ejecucion greedy: {ejecucion_greedy}')
-        # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos)+ 1)), len(ejecucion_greedy))
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.assertGreaterEqual(len(ejecucion_greedy), res)
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
 
     def test_10_pocos_subconjuntos(self):
         file = './archivos_prueba/10_pocos.txt'
         res = 3
 
+
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
         # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
+
         self.assertEqual(res, len(ejecucion))
 
     def test_10_todos_subconjuntos(self):
@@ -50,100 +72,118 @@ class UnitTests(unittest.TestCase):
         res = 10
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
         # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
+
+
 
     def test_10_varios_subconjuntos(self):
         file = './archivos_prueba/10_varios.txt'
         res = 6
 
-        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
 
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
         # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
 
     def test_15_subconjuntos(self):
         file = './archivos_prueba/15.txt'
         res = 4
 
+
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
         # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
+
 
     def test_20_subconjuntos(self):
         file = './archivos_prueba/20.txt'
         res = 5
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
         # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
+
 
     def test_50_subconjuntos(self):
         file = './archivos_prueba/50.txt'
         res = 6
 
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-
-        # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.assertGreaterEqual(len(ejecucion_greedy), res)
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
 
-    # def test_75_subconjuntos(self):
-    #     file = './archivos_prueba/75.txt'
-    #     res = 8
+    def test_75_subconjuntos(self):
+        file = './archivos_prueba/75.txt'
+        res = 8
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        # self.assertGreaterEqual(len(ejecucion_greedy), res)
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
+        self.assertEqual(res, len(ejecucion))
 
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-    #     # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-   
-    #     # self.assertGreaterEqual(len(ejecucion_greedy), res)
-    #     # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
-    #     self.assertEqual(res, len(ejecucion))
+    def test_100_subconjuntos(self):
+        file = './archivos_prueba/100.txt'
+        res = 9
 
-    # def test_100_subconjuntos(self):
-    #     file = './archivos_prueba/100.txt'
-    #     res = 9
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        # self.assertGreaterEqual(len(ejecucion_greedy), res)
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
+        self.assertEqual(res, len(ejecucion))
 
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+    def test_200_subconjuntos(self):
+        file = './archivos_prueba/200.txt'
+        res = 9
 
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-    #     # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-
-    #     # self.assertGreaterEqual(len(ejecucion_greedy), res)
-    #     # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
-    #     self.assertEqual(res, len(ejecucion))
-
-    # def test_200_subconjuntos(self):
-    #     file = './archivos_prueba/200.txt'
-    #     res = 9
-
-    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
-
-    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-    #     # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)     
-    #     # self.assertGreaterEqual(len(ejecucion_greedy), res)
-    #     # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))        
-    #     self.assertEqual(res, len(ejecucion))
+        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+        ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+        pesos = calcular_pesos(subconjuntos)
+        peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
+        peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        # self.assertGreaterEqual(len(ejecucion_greedy), res)
+        self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
+        self.assertEqual(res, len(ejecucion))
 
 
 if __name__ == '__main__':
