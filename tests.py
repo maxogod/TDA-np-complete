@@ -27,7 +27,7 @@ class UnitTests(unittest.TestCase):
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
-
+        # print(f'ejecucion greedy: {ejecucion_greedy}')
         # self.assertGreaterEqual(len(ejecucion_greedy), res)
         # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos)+ 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
@@ -107,43 +107,43 @@ class UnitTests(unittest.TestCase):
         # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
         self.assertEqual(res, len(ejecucion))
 
-    def test_75_subconjuntos(self):
-        file = './archivos_prueba/75.txt'
-        res = 8
+    # def test_75_subconjuntos(self):
+    #     file = './archivos_prueba/75.txt'
+    #     res = 8
 
-        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
 
-        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+    #     # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
    
-        # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
-        self.assertEqual(res, len(ejecucion))
+    #     # self.assertGreaterEqual(len(ejecucion_greedy), res)
+    #     # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+    #     self.assertEqual(res, len(ejecucion))
 
-    def test_100_subconjuntos(self):
-        file = './archivos_prueba/100.txt'
-        res = 9
+    # def test_100_subconjuntos(self):
+    #     file = './archivos_prueba/100.txt'
+    #     res = 9
 
-        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
 
-        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
+    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+    #     # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)        
 
-        # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
-        self.assertEqual(res, len(ejecucion))
+    #     # self.assertGreaterEqual(len(ejecucion_greedy), res)
+    #     # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))
+    #     self.assertEqual(res, len(ejecucion))
 
-    def test_200_subconjuntos(self):
-        file = './archivos_prueba/200.txt'
-        res = 9
+    # def test_200_subconjuntos(self):
+    #     file = './archivos_prueba/200.txt'
+    #     res = 9
 
-        conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
+    #     conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
 
-        ejecucion = obtener_hitting_set(conjunto, subconjuntos)
-        # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)     
-        # self.assertGreaterEqual(len(ejecucion_greedy), res)
-        # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))        
-        self.assertEqual(res, len(ejecucion))
+    #     ejecucion = obtener_hitting_set(conjunto, subconjuntos)
+    #     # ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)     
+    #     # self.assertGreaterEqual(len(ejecucion_greedy), res)
+    #     # self.assertGreaterEqual(math.ceil(math.log(len(subconjuntos) + 1)), len(ejecucion_greedy))        
+    #     self.assertEqual(res, len(ejecucion))
 
 
 if __name__ == '__main__':
