@@ -15,10 +15,6 @@ def calcular_pesos(subconjuntos):
             else:
                 pesos[jugador] += 1
 
-    # for jugador in pesos.keys():
-    #     for subconjunto in subconjuntos:
-    #         if jugador in subconjunto:
-    #             pesos[jugador] /= len(subconjunto)        
     return pesos
 
 class UnitTests(unittest.TestCase):
