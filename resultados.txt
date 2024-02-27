@@ -2,13 +2,13 @@ Test: test_100_subconjuntos
 (9, 10)
 
 Test: test_10_pocos_subconjuntos
-(3, 4)
+(3, 3)
 
 Test: test_10_todos_subconjuntos
 (10, 10)
 
 Test: test_10_varios_subconjuntos
-(6, 7)
+(6, 6)
 
 Test: test_15_subconjuntos
 (4, 5)
