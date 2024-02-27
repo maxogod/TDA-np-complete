@@ -9,16 +9,16 @@ def calcular_coeficiente(subconjuntos):
     suma_largos_subconjuntos = 0
     for subconjunto in subconjuntos:
         for jugador in subconjunto:
-            pesos[jugador] = pesos.get(jugador, 0) + 1
-        suma_largos_subconjuntos += len(subconjunto)
-        
+            if jugador not in pesos:
+                pesos[jugador] = (0, 0)
+            pesos[jugador] = (pesos[jugador][0] + 1, pesos[jugador][1] + len(subconjunto))
         
     for jugador in pesos.keys():
-        pesos[jugador] = 1 / (pesos[jugador] * suma_largos_subconjuntos)
+        pesos[jugador] = 1 / (pesos[jugador][0] * pesos[jugador][1])
    
     return pesos
 
-def hitting_set_greedy(A, B):
+def hitting_set_greedy(B):
     hitting_set = []
     while B:
         pesos = calcular_coeficiente(B)
@@ -38,5 +38,5 @@ def hitting_set_greedy(A, B):
 if __name__ == "__main__":
     args = sys.argv
     A, B = obtener_conjunto_y_subconjuntos(args[1])
-    ejecucion = hitting_set_greedy(A, B)
+    ejecucion = hitting_set_greedy(B)
     print(f"Jugadores Totales: {len(ejecucion)}\nLista de Jugadores: {ejecucion}")
