@@ -5,15 +5,14 @@ def calcular_pesos(subconjuntos):
     pesos = {}
     for subconjunto in subconjuntos:
         for jugador in subconjunto:
-            pesos[jugador] = pesos.get(jugador, 0) + 1
+            if jugador not in pesos:
+                pesos[jugador] = {'frecuencia': 0, 'largo_total': 0}
+            pesos[jugador]['frecuencia'] += 1
+            pesos[jugador]['largo_total'] += len(subconjunto)
         
     for jugador in pesos.keys():
-        largo_interseccion = 1
-        for subconjunto in subconjuntos:
-            if jugador in subconjunto:
-                largo_interseccion += len(subconjunto)
-        
-        pesos[jugador] = 1 / (pesos[jugador] * largo_interseccion)            
+        pesos[jugador] = 1 / (pesos[jugador]['frecuencia'] * pesos[jugador]['largo_total'])
+   
     return pesos
 
 def hitting_set_greedy(A, B):
@@ -21,7 +20,6 @@ def hitting_set_greedy(A, B):
     hitting_set = []
     pesos = calcular_pesos(B)
     a.sort(key=lambda jugador: pesos.get(jugador, 0))
-    print(f'Primer a: {a}')
     while len(B) > 0:
         hitting_set.append(a[0])
         
