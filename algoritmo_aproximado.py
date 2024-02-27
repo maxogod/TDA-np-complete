@@ -6,7 +6,6 @@ from utils.utils import obtener_conjunto_y_subconjuntos
 # Esto es lo que se tiene que buscar minimizar en cada paso segun el K&T, 11.3
 def calcular_coeficiente(subconjuntos):
     pesos = {}
-    suma_largos_subconjuntos = 0
     for subconjunto in subconjuntos:
         for jugador in subconjunto:
             if jugador not in pesos:
@@ -22,7 +21,7 @@ def hitting_set_greedy(B):
     hitting_set = []
     while B:
         pesos = calcular_coeficiente(B)
-
+        print(pesos)
         a = [jugador for jugador in pesos.keys()]
         a.sort(key=lambda jugador: pesos.get(jugador, 0))
 
