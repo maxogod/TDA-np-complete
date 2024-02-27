@@ -21,7 +21,7 @@ def hitting_set_greedy(B):
     hitting_set = []
     while B:
         pesos = calcular_coeficiente(B)
-        print(pesos)
+
         a = [jugador for jugador in pesos.keys()]
         a.sort(key=lambda jugador: pesos.get(jugador, 0))
 
