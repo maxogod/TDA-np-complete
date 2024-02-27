@@ -3,7 +3,6 @@
 # Esto es lo que se tiene que buscar minimizar en cada paso segun el K&T, 11.3
 def calcular_pesos(A, subconjuntos):
     pesos = {}
-    # (frecuencia / largo de todas las intersecciones)
     for subconjunto in subconjuntos:
         for jugador in subconjunto:
             pesos[jugador] = pesos.get(jugador, 0) + 1
@@ -32,8 +31,3 @@ def hitting_set_greedy(A, B):
                 if jugador not in a:
                     a.append(jugador)
     return hitting_set
-
-
-
-
-
