@@ -19,7 +19,6 @@ def calcular_coeficiente(subconjuntos):
     return pesos
 
 def hitting_set_greedy(A, B):
-    a = list(A)
     hitting_set = []
     while len(B) > 0:
         pesos = calcular_coeficiente(B)
