@@ -24,7 +24,7 @@ def hitting_set_greedy(A, B):
         hitting_set.append(a[0])
         
         B = [s for s in B if a[0] not in s]        
-        pesos.pop(a[0])
+        pesos.pop(a[0], None)
         pesos = calcular_pesos(B) # Esto ya itera sobre los subsets, por lo que si algo no existe en B, no se agrega a a
         a = [jugador for jugador in pesos.keys()]
         a.sort(key=lambda jugador: pesos.get(jugador, 0))
