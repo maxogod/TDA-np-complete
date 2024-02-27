@@ -14,6 +14,15 @@ def calcular_pesos(subconjuntos):
     return pesos
 
 class UnitTests(unittest.TestCase):
+    def guardar_resultados(self, resultado):
+        # Nombre del archivo para guardar los resultados
+        archivo_resultados = "resultados.txt"
+        # Se abre el archivo en modo append (añadir al final)
+        with open(archivo_resultados, "w") as archivo:
+            # Se escribe el nombre del test y su resultado
+            archivo.write(f"Test: {self._testMethodName}\n")
+            archivo.write(f"{resultado}\n\n")
+
     def test_5_subconjuntos(self):
         file = './archivos_prueba/5.txt'
         res = 2
@@ -25,7 +34,8 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
-        
+
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         self.assertGreaterEqual(len(ejecucion_greedy), res)
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -41,7 +51,8 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
-        
+
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
 
@@ -56,6 +67,8 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
 
@@ -72,6 +85,8 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -90,6 +105,8 @@ class UnitTests(unittest.TestCase):
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
         
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
+        
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
 
@@ -104,6 +121,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -120,6 +138,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -136,6 +155,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -151,6 +171,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -166,6 +187,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
@@ -181,6 +203,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
+        self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
         self.assertEqual(res, len(ejecucion))
