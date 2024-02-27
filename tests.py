@@ -18,7 +18,7 @@ class UnitTests(unittest.TestCase):
         # Nombre del archivo para guardar los resultados
         archivo_resultados = "resultados.txt"
         # Se abre el archivo en modo append (añadir al final)
-        with open(archivo_resultados, "w") as archivo:
+        with open(archivo_resultados, "a") as archivo:
             # Se escribe el nombre del test y su resultado
             archivo.write(f"Test: {self._testMethodName}\n")
             archivo.write(f"{resultado}\n\n")
@@ -30,8 +30,8 @@ class UnitTests(unittest.TestCase):
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)
-        print(ejecucion_greedy)
-        print(len(ejecucion_greedy))
+        
+        
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
@@ -52,7 +52,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
-        print(ejecucion_greedy)
+        
 
         self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         self.assertGreaterEqual(math.log(len(conjunto)) * peso_optimo, peso_greedy)
@@ -69,7 +69,7 @@ class UnitTests(unittest.TestCase):
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
         peso_greedy = sum([pesos[jugador] for jugador in ejecucion_greedy])
-        print(ejecucion_greedy)
+        
         
         self.guardar_resultados((len(ejecucion),len(ejecucion_greedy)))
         
@@ -120,8 +120,6 @@ class UnitTests(unittest.TestCase):
         conjunto, subconjuntos = obtener_conjunto_y_subconjuntos(file)
         ejecucion = obtener_hitting_set(conjunto, subconjuntos)
         ejecucion_greedy = hitting_set_greedy(conjunto, subconjuntos)
-        print(ejecucion_greedy)
-        print(len(ejecucion_greedy))
 
         pesos = calcular_pesos(subconjuntos)
         peso_optimo = sum([pesos[jugador] for jugador in ejecucion])
@@ -215,4 +213,6 @@ class UnitTests(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    with open("resultados.txt", "w"):
+        pass 
     unittest.main()
