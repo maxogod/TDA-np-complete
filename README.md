@@ -4,7 +4,9 @@
 
 [Análisis](https://github.com/maxogod/TDA-np-complete/blob/main/analisis.ipynb)
 
-[Algoritmo](https://github.com/maxogod/TDA-np-complete/blob/main/algoritmo.py)
+[Algoritmo Optimo](https://github.com/maxogod/TDA-np-complete/blob/main/algoritmo_backtracking.py)
+
+[Algoritmo Aproximado](https://github.com/maxogod/TDA-np-complete/blob/main/algoritmo_aproximado.py)
 
 [Tests](https://github.com/maxogod/TDA-np-complete/blob/main/tests.py)
 
